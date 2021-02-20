@@ -10,11 +10,11 @@ from matplotlib import style          #IMPORTING THE STYLE FROM MATPLOTLIB AS SO
 import pandas as pd                   #IMPORTING PANDAS AS 'pd' TO ALLOW THE PROGRAM TO UTILSE AND READ THE DATA FROM THE CSV FILE
 
 
-df19 = pd.read_csv('Berlin 2019.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2019 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2020 GRAPH
+df19 = pd.read_csv('Berlin 2019.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2019 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2019 GRAPH
 
-df20 = pd.read_csv('Berlin 2020.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2020 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2019 GRAPH
+df20 = pd.read_csv('Berlin 2020.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2020 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2020 GRAPH
 
-ax = df19.plot(color='#d5d8dc')  #CREATING AN 'ax' VARIABLE THAT ALLOWS FOR THE 2019 GRAPH TO BE PLOTTED WITH THE 2020 GRAPH AND GIVING IT A BLUE COLOUR
+ax = df19.plot(color='#d5d8dc')  #CREATING AN 'ax' VARIABLE THAT ALLOWS FOR THE 2019 GRAPH TO BE PLOTTED WITH THE 2020 GRAPH AND GIVING IT A GREY COLOUR
 ax.set_ylabel("NO2 Level")       #SETTING THE Y AXIS LABEL TO BE 'NO2 Level'
 
 df20.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Berlin',ax=ax) #CREATING THE 2019 AND 2020 GRAPH WITH THE 2019 GRAPH ON THE SAME AXIS
