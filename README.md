@@ -1,8 +1,8 @@
-TEAM SOFTWARE ENGINEERING GROUP 2 - DATA ANALYSIS
+Team Software Engineering Group 2 - Data Analysis
 
-NATHAN JONES, ELA SALAH, RYAN MUSIWA, SAMUAL BAILEY, SAM DAVEY & BEN MOSS
+Nathan Jones, Ela Salah, Ryan Musiwa, Samual Bailey, Sam Davey & Ben Moss
 
-FEB/MAR/APR/MAY 2021
+Q1 2021
 
 ---- DESCRIPTION ----
 
