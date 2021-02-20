@@ -1,14 +1,22 @@
-from matplotlib import pyplot as plt
-from matplotlib import style
-import pandas as pd
+#TEAM SOFTWARE ENGINEERING GROUP 2 - DATA ANALYSIS
+#NATHAN JONES, ELA SALAH, RYAN MUSIWA, SAMUAL BAILEY, SAM DAVEY & BEN MOSS
+#DEVELOPED AND CODED BY NATHAN JONES
+#FEB/MAR/APR/MAY 2021
 
-df20 = pd.read_csv('London 2020.csv', parse_dates=['Month'], index_col="Month")
+#LONDON DATA OF NO2 LEVELS
 
-df19 = pd.read_csv('London 2019.csv', parse_dates=['Month'], index_col="Month")
+from matplotlib import pyplot as plt #IMPORTING PYPLOT FROM MATPLOTLIB AS 'plt' TO ACTUALLY PLOT AND SHOW THE GRAPHS
+from matplotlib import style         #IMPORTING THE STYLE FROM MATPLOTLIB AS SO THE STYLE OF THE GRAPHS CAN BE CHANGE
+import pandas as pd                  #IMPORTING PANDAS AS 'pd' TO ALLOW THE PROGRAM TO UTILSE AND READ THE DATA FROM THE CSV FILE
 
-ax = df20.plot(color='#3498db')
-ax.set_ylabel("NO2 Level")
-df19.plot(color='#d5d8dc', title='Difference In NO2 Levels In 2019 And 2020 - London',ax=ax)
+df20 = pd.read_csv('London 2020.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2020 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2020 GRAPH
 
-plt.plot()
-plt.show()
+df19 = pd.read_csv('London 2019.csv', parse_dates=['Month'], index_col="Month")  #CREATING THE 2019 DATA-FRAME THAT WILL STORE ALL DATA FOR THE 2019 GRAPH
+
+ax = df20.plot(color='#3498db')  #CREATING AN 'ax' VARIABLE THAT ALLOWS FOR THE 2020 GRAPH TO BE PLOTTED WITH THE 2019 GRAPH AND GIVING IT A BLUE COLOUR
+ax.set_ylabel("NO2 Level")       #SETTING THE Y AXIS LABEL TO BE 'NO2 Level'
+
+df19.plot(color='#d5d8dc', title='Difference In NO2 Levels In 2019 And 2020 - London',ax=ax) #CREATING THE 2019 AND 2020 GRAPH WITH THE 2019 GRAPH ON THE SAME AXIS
+
+plt.plot()  #ACTUALLING PLOTTING THE GRAPH USING MATPLOTLIB    
+plt.show()  #DISPLAYING THE GRAPH TO THE USER
