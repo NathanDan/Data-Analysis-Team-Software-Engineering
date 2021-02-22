@@ -20,31 +20,23 @@ as we are not making a profit and are solely using the data to educate and show 
 ---- DATA SOURCES ----
 
 Amsterdam - http://www.luchtmeetnet.nl/
-
           - https://aqicn.org/data-platform
 
 Berlin    - https://www.berlin.de/senuvk/umwelt/luftqualitaet/
-
           - https://aqicn.org/data-platform
 
 Barcelona - http://mediambient.gencat.cat/ca/05_ambits_dactuacio/
-
           - https://aqicn.org/data-platform
 
 London    - https://uk-air.defra.gov.uk/
-
           - https://londonair.org.uk/LondonAir/Default.aspx
-          - 
           - https://aqicn.org/data-platform
 
 Madrid    - http://www.mambiente.munimadrid.es/opencms/opencms/calaire/
-
           - https://www.eea.europa.eu/themes/air/
-          - 
           - https://aqicn.org/data-platform
 
 Milan     - https://www.arpalombardia.it/
-
           - https://aqicn.org/data-platform
 
 
