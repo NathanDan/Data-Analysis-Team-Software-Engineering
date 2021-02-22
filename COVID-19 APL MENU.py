@@ -315,7 +315,7 @@ def MenuMain():
         Chart2019.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                         #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
 
         ax.set_ylabel("NO2 Level")                                                         #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df19.plot(color='#d5d8dc', title='NO2 Levels In 2019 - Barcelona',ax=ax)           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
+        df19.plot(color='#d5d8dc', title='NO2 Levels In 2019 - Amsterdam',ax=ax)           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
         
         figure1920 = plt.Figure(figsize=(6,5), dpi=90)                                      #CREATING THE FRAME FOR THE 2019 2020 COMPARISION GRAPH TO BE DISPLAYED IN
         df191 = pd.read_csv('Amsterdam 2019.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE 2019 POINTS
