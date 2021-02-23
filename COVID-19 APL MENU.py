@@ -4,7 +4,7 @@
 #FEB/MAR/APR/MAY 2021
 
 #COVID-19 AND POLUTION LEVELS TRACKER
-#VERSION 1.1.2
+#VERSION 1.1.3
 
 import tkinter as tk                                             #IMPORTING THE TKINTER MODULE TO BE USED IN THE PROGRAM
 import sys                                                       #ALLOWS ACCESS TO THE SYSTEM FROM WITHIN PYTHON
@@ -72,15 +72,17 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - London',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('London\\London 2020.csv', parse_dates=['Month'], index_col="Month")       #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                              #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, LONDON)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                    #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                  #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('London\\London Lockdown Dates.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('London\\London 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                                #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, LONDON)                                               #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                      #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
          
-        ax.set_ylabel("NO2 Level")                                                                    #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - London',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
-
+        ax.set_ylabel("NO2 Level")                                                                      #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - London',ax=ax)                           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                           #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
+        
     def Madrid():
         MENU.destroy()                                                                                             #CLOSING THE MENU AFTER THE WINDOW HAS BEEN LAUNCHED
         MADRID = Tk()                                                                                              #CREATING THE WINDOW THAT WILL HOUSE THE CITY'S DATA
@@ -123,14 +125,16 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Madrid',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('Madrid\\Madrid 2020.csv', parse_dates=['Month'], index_col="Month")       #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                              #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, MADRID)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                    #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                  #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('Madrid\\Madrid Lockdown Dates.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('Madrid\\Madrid 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                                #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, MADRID)                                               #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                      #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
          
-        ax.set_ylabel("NO2 Level")                                                                    #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Madrid',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        ax.set_ylabel("NO2 Level")                                                                      #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Madrid',ax=ax)                           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                           #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
     def Milan():
         MENU.destroy()                                                                                           #CLOSING THE MENU AFTER THE WINDOW HAS BEEN LAUNCHED
@@ -174,14 +178,16 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Milan',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                               #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('Milan\\Milan 2020.csv', parse_dates=['Month'], index_col="Month")        #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                             #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, MILAN)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                   #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                 #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('Milan\\Milan Lockdown Dates.csv', parse_dates=['Month'], index_col="Month")  #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('Milan\\Milan 2020.csv', parse_dates=['Month'], index_col="Month")          #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                               #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, MILAN)                                               #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                     #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
          
-        ax.set_ylabel("NO2 Level")                                                                   #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Milan',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        ax.set_ylabel("NO2 Level")                                                                     #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Milan',ax=ax)                           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                          #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
     def Berlin():
         MENU.destroy()                                                                                             #CLOSING THE MENU AFTER THE WINDOW HAS BEEN LAUNCHED
@@ -226,14 +232,16 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Berlin',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('Berlin\\Berlin 2020.csv', parse_dates=['Month'], index_col="Month")       #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                              #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, BERLIN)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                    #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                  #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('Berlin\\Berlin Lockdown Dates.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('Berlin\\Berlin 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                                #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, BERLIN)                                               #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                      #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
         
-        ax.set_ylabel("NO2 Level")                                                                    #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Berlin',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        ax.set_ylabel("NO2 Level")                                                                      #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Berlin',ax=ax)                           #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                           #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
 
     def Barcelona():
         MENU.destroy()                                                                                                   #CLOSING THE MENU AFTER THE WINDOW HAS BEEN LAUNCHED
@@ -277,14 +285,16 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Barcelona',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                   #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('Barcelona\\Barcelona 2020.csv', parse_dates=['Month'], index_col="Month")    #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                                 #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, BARCELONA)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                       #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                        #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('Barcelona\\Barcelona Lockdown Dates.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('Barcelona\\Barcelona 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                                      #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, BARCELONA)                                                  #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                            #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
          
-        ax.set_ylabel("NO2 Level")                                                                       #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Barcelona',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        ax.set_ylabel("NO2 Level")                                                                            #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Barcelona',ax=ax)                              #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                                 #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
 
     def Amsterdam():
         MENU.destroy()                                                                                                   #CLOSING THE MENU AFTER THE WINDOW HAS BEEN LAUNCHED
@@ -328,14 +338,16 @@ def MenuMain():
         df201.plot(color='#3498db', title='Difference In NO2 Levels In 2019 And 2020 - Amsterdam',ax=ax) #PLOTTING THE DATA FROM THE 2020 CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH 
 
 
-        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                   #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
-        df20 = pd.read_csv('Amsterdam\\Amsterdam 2020.csv', parse_dates=['Month'], index_col="Month")    #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        ax = figure2020.add_subplot(111)                                                                 #ADDING THE GRAPH TO THE FRAME
-        Chart2020 = FigureCanvasTkAgg(figure2020, AMSTERDAM)                                             #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
-        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                       #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
+        figure2020 = plt.Figure(figsize=(6,5), dpi=90)                                                        #CREATING THE FRAME FOR THE 2020 GRAPH TO BE DISPLAYED IN
+        LD = pd.read_csv('Amsterdam\\Amsterdam Lockdown Dates.csv', parse_dates=['Month'], index_col="Month") #READING THE CSV FILE WITH ALL OF THE DATA ON THE LOCKDOWNS TO POPULATE THE GRAPH
+        df20 = pd.read_csv('Amsterdam\\Amsterdam 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        ax = figure2020.add_subplot(111)                                                                      #ADDING THE GRAPH TO THE FRAME
+        Chart2020 = FigureCanvasTkAgg(figure2020, AMSTERDAM)                                                  #DISPLAYING THE GRAPH IN THE TKINTER WINDOW FOR THE CITY
+        Chart2020.get_tk_widget().pack(side=tk.LEFT, fill=tk.BOTH)                                            #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
          
-        ax.set_ylabel("NO2 Level")                                                                       #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
-        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Amsterdam',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        ax.set_ylabel("NO2 Level")                                                                            #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
+        df20.plot(color='#3498db', title='NO2 Levels In 2020 - Amsterdam',ax=ax)                              #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
+        LD.plot.area(color='#FF000015',ax=ax)                                                                 #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA    
         
 
     b1 = Button(MENU, text="     London - Air Pollution Data   ", command=London)        #CREATING A BUTTON THAT WILL TAKE THE USER TO THE LONDON DATA
