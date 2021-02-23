@@ -6,7 +6,8 @@ Q1 2021
 
 ---- DESCRIPTION ----
 
-This is a COVID-19 Air Pollution tracking program that will look at the correlation between COVID-19 Lockdowns and the overall pollution impact in certain European cities. The program will utilse graphs and other visual stats to allow for a visual representation a significant or minimal difference in pollution levels with as a result to the on going pandemic.
+This is a COVID-19 Air Pollution tracking program that looks at the correlation between COVID-19 Lockdowns and the overall pollution impact in certain European cities. The program utilses graphs and other visual stats to allow for a visual representation of a significant or minimal difference in pollution levels as a 
+result to the on going pandemic.
 
 ---- ACKNOWLEDGEMENTS ----
 
