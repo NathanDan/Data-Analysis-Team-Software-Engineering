@@ -4,7 +4,7 @@
 #FEB/MAR/APR/MAY 2021
 
 #COVID-19 AND POLUTION LEVELS TRACKER
-#VERSION 1.1.4
+#VERSION 1.1.5
 
 import tkinter as tk                                             #IMPORTING THE TKINTER MODULE TO BE USED IN THE PROGRAM
 import sys                                                       #ALLOWS ACCESS TO THE SYSTEM FROM WITHIN PYTHON
@@ -22,7 +22,42 @@ def MenuMain():
     MENU.title("COVID-19 Air Polution Levels")                  #GIVING THE WINDOW A TITLE
     tabControl = ttk.Notebook(MENU)                             #TELLING THE PROGRAM THAT WILL WILL BE A TABBED WIDGET
 
+    HOMEPAGETAB = ttk.Frame()
 
+    s1 = Label(HOMEPAGETAB, text=" ")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                                
+    l1 = Label(HOMEPAGETAB, text="COVID-19 & Air Pollution Levels - Homepage", font='Helvetica 12 bold')                        #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                                   #DISPLAYING THE LABEL
+    s3 = Label(HOMEPAGETAB, text=" ")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                                   #DISPLAYING THE SPCAE LABEL
+
+    l2 = Label(HOMEPAGETAB, text="Welcome To The Homepage ", font='Helvetica 10 bold')                                          #CREATING A SUB HEADING FOR THE DESCRIPTION 
+    l2.pack()                                                                                                                   #DISPLAYING THE LABEL
+    
+    l3 = Label(HOMEPAGETAB, text=
+    """This is a COVID-19 Air Pollution tracking program that looks at the correlation between COVID-19 Lockdowns and
+    the overall pollution impact in certain European cities. The program utilses graphs and other visual stats to allow for
+    a visual representation of a significant or minimal difference in pollution levels as a result to the on going pandemic.""",
+    font='Helvetica 10 ')                                                                                                       #CREATING A DESCRIPTION OF THE PROGRAM FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
+    l3.pack()                                                                                                                   #DISPLAYING THE LABEL
+    
+    l4 = Label(HOMEPAGETAB, text=
+    """The data that is being used in these program has been sourced from the World Air Quality Index Project (WAQIP) and
+    its Air Quality Historical Data Platform (https://aqicn.org/data-platform) that is a free to use service, that gathers
+    Air Quality Data (AQD) from various sources and groups them together to produce a databse that consits of AQD from
+    all over the World. As this program is free and for educational purposes we are allowed to use the data-sets from
+    the WAQIP as we are not making a profit and are solely using the data to educate and show a trend in the data.""",
+    font='Helvetica 10 ')                                                                                                       #CREATING A DESCRIPTION OF THE DATA USED FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
+    l4.pack()                                                                                                                   #DISPLAYING THE LABEL
+
+    l5 = Label(HOMEPAGETAB, text="The Development Team",font='Helvetica 10 bold')                                               #CREATING A SUB HEADING FOR THE DESCRIPTION  
+    l5.pack()                                                                                                                   #DISPLAYING THE LABEL
+
+    l6 = Label(HOMEPAGETAB, text=
+    "Nathan Jones, Ben Moss, Samual Bailey, Ryan Musiwa, Sam Davey & Ela Salah", font='Helvetica 10 ')                          #CREATING A LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
+    l6.pack()                                                                                                                   #DISPLAYING THE LABEL
+    
+    
     
     LONDONTAB = ttk.Frame()                                                                          #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
 
@@ -277,6 +312,7 @@ def MenuMain():
     LD.plot.area(color='#FF000015',ax=ax)                                                                  #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA    
 
 
+    tabControl.add(HOMEPAGETAB, text ='Homepage')                        #GIVING THE TAB ITS SPECIFIC NAME AS A HOMEPAGE 
     tabControl.add(LONDONTAB, text ='London - Air Pollution Data')       #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY     
     tabControl.add(MADRIDTAB, text ='Madrid - Air Pollution Data')       #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
     tabControl.add(MILANTAB, text ='Milan - Air Pollution Data')         #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
