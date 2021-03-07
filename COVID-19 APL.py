@@ -4,7 +4,7 @@
 #FEB/MAR/APR/MAY 2021
 
 #COVID-19 AND POLUTION LEVELS TRACKER
-#VERSION 1.1.6
+#VERSION 1.1.7
 
 import tkinter as tk                                             #IMPORTING THE TKINTER MODULE TO BE USED IN THE PROGRAM
 import sys                                                       #ALLOWS ACCESS TO THE SYSTEM FROM WITHIN PYTHON
@@ -18,67 +18,71 @@ from tkinter import messagebox, Label, Button, FALSE, Tk, Entry  #ALLOWING FOR T
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg  #ALLOWING FOR THE MATPLOTLIB GRAPHS TO BE INSERTED INTO THE TKINTER GUI'S
 
 def MenuMain():
-    MENU = Tk()                                                 #CREATING THE WINDOW THAT WILL BE DISPLAYED TO THE USER AND HOUSES ALL OF THE DIFFERENT TABS
-    MENU.title("COVID-19 Air Polution Levels")                  #GIVING THE WINDOW A TITLE
-    MENU.resizable(width=FALSE, height=FALSE)                   #THE WINDOW WILL NOT ENTER FULLSCREEN MODE
-    MENU.geometry("1690x700")                                   #CONFIGURING THE FIXED SIZE OF THE WINDOW WHICH WILL ALWAYS BE THIS SIZE      
-    tabControl = ttk.Notebook(MENU)                             #TELLING THE PROGRAM THAT WILL WILL BE A TABBED WIDGET
+    MENU = Tk()                                                  #CREATING THE WINDOW THAT WILL BE DISPLAYED TO THE USER AND HOUSES ALL OF THE DIFFERENT TABS
+    MENU.title("COVID-19 Air Polution Levels")                   #GIVING THE WINDOW A TITLE
+    MENU.resizable(width=FALSE, height=FALSE)                    #THE WINDOW WILL NOT ENTER FULLSCREEN MODE
+    MENU.geometry("1690x700")                                    #CONFIGURING THE FIXED SIZE OF THE WINDOW WHICH WILL ALWAYS BE THIS SIZE
+    tabControl = ttk.Notebook(MENU)                              #TELLING THE PROGRAM THAT WILL WILL BE A TABBED WIDGET
 
-    HOMEPAGETAB = ttk.Frame()
+    style = ttk.Style()
+    style.configure("W.TFrame", foreground="white", background="white")
+    
+    HOMEPAGETAB = ttk.Frame(style="W.TFrame")
 
-    s1 = Label(HOMEPAGETAB, text=" ")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                                
-    l1 = Label(HOMEPAGETAB, text="COVID-19 & Air Pollution Levels - Homepage", font='Helvetica 12 bold')                        #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                                                   #DISPLAYING THE LABEL
-    s3 = Label(HOMEPAGETAB, text=" ")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                                                   #DISPLAYING THE SPCAE LABEL
-    l2 = Label(HOMEPAGETAB, text="Welcome To The Homepage!", font='Helvetica 10 bold')                                          #CREATING A SUB HEADING FOR THE DESCRIPTION 
-    l2.pack()                                                                                                                   #DISPLAYING THE LABEL
+    s1 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                                               #DISPLAYING THE SPCAE LABEL                                                                                                
+    l1 = Label(HOMEPAGETAB, text="COVID-19 & Air Pollution Levels - Homepage", font='Helvetica 12 bold', bg="white")                        #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                                               #DISPLAYING THE LABEL
+    s3 = Label(HOMEPAGETAB, text=" ",bg="white")                                                                                            #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                                               #DISPLAYING THE SPCAE LABEL
+    l2 = Label(HOMEPAGETAB, text="Welcome To The Homepage!", font='Helvetica 10 bold', bg="white")                                          #CREATING A SUB HEADING FOR THE DESCRIPTION 
+    l2.pack()                                                                                                                               #DISPLAYING THE LABEL
     l3 = Label(HOMEPAGETAB, text=
     """This is a COVID-19 Air Pollution tracking program that looks at the correlation between COVID-19 Lockdowns
     and the overall pollution impact in certain European cities. The program utilses graphs and other visual stats to
     allow for a visual representation of a significant or minimal difference in pollution levels as a result to the on going
     pandemic.""",
-    font='Helvetica 10 ')                                                                                                       #CREATING A DESCRIPTION OF THE PROGRAM FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
-    l3.pack()                                                                                                                   #DISPLAYING THE LABEL
+    font='Helvetica 10 ', bg="white")                                                                                                       #CREATING A DESCRIPTION OF THE PROGRAM FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
+    l3.pack()                                                                                                                               #DISPLAYING THE LABEL
     l4 = Label(HOMEPAGETAB, text=
     """The data that is being used in this program has been sourced from the World Air Quality Index Project (WAQIP)
     and its Air Quality Historical Data Platform (https://aqicn.org/data-platform) that is a free to use service, that gathers
     Air Quality Data (AQD) from various sources and groups them together to produce a databse that consits of AQD from
     all over the World. As this program is free and for educational purposes we are allowed to use the data-sets from the
     WAQIP as we are not making a profit and are solely using the data to educate and show a trend in the data.""",
-    font='Helvetica 10 ')                                                                                                       #CREATING A DESCRIPTION OF THE DATA USED FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
-    l4.pack()                                                                                                                   #DISPLAYING THE LABEL
+    font='Helvetica 10 ', bg="white")                                                                                                       #CREATING A DESCRIPTION OF THE DATA USED FOR THE USER TO SEE WHEN THEY FIRST LOAD PROGRAM
+    l4.pack()                                                                                                                               #DISPLAYING THE LABEL
     
-    l5 = Label(HOMEPAGETAB, text="Make sure to keep upto date with the latest updates and features with the website down below!",font='Helvetica 10')  #CREATING A SUB HEADING FOR THE DESCRIPTION  
-    l5.pack()                                                                                                                                          #DISPLAYING THE LABEL
-    s3 = Label(HOMEPAGETAB, text=" ")                                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                                                                          #DISPLAYING THE SPCAE LABEL
-    l6 = Label(HOMEPAGETAB, text="The Development Team",font='Helvetica 10 bold')                                                                      #CREATING A SUB HEADING FOR THE DESCRIPTION  
-    l6.pack()                                                                                                                                          #DISPLAYING THE LABEL
+    l5 = Label(HOMEPAGETAB, text="Make sure to keep upto date with the latest updates and features with the website down below!",font='Helvetica 10', bg="white")  #CREATING A SUB HEADING FOR THE DESCRIPTION  
+    l5.pack()                                                                                                                                                      #DISPLAYING THE LABEL
+    s3 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                                                                      #DISPLAYING THE SPCAE LABEL
+    l6 = Label(HOMEPAGETAB, text="The Development Team",font='Helvetica 10 bold',bg="white")                                                                       #CREATING A SUB HEADING FOR THE DESCRIPTION  
+    l6.pack()                                                                                                                                                      #DISPLAYING THE LABEL
     l7 = Label(HOMEPAGETAB, text=
-    "Nathan Jones, Ben Moss, Samual Bailey, Ryan Musiwa, Sam Davey & Ela Salah", font='Helvetica 10 ')                                 #CREATING A LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
-    l7.pack()                                                                                                                          #DISPLAYING THE LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
-    s4 = Label(HOMEPAGETAB, text=" ")                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s4.pack()                                                                                                                          #DISPLAYING THE SPCAE LABEL
-    l8 = Label(HOMEPAGETAB, text="Contact Information",font='Helvetica 10 bold')                                                       #CREATING A SUB HEADING FOR THE CONTACT INFORMATION  
-    l8.pack()                                                                                                                          #DISPLAYING THE LABEL
-    l9 = Label(HOMEPAGETAB, text="Website: https://github.com/NathanDan/Data-Analysis-Team-Software-Engineering",font='Helvetica 10')  #CREATING A LABEL FOR THE DESCRIPTION OF THE CONTACT INFORMATION 
-    l9.pack()                                                                                                                          #DISPLAYING THE LABEL
-    l10 = Label(HOMEPAGETAB, text="Version 1.1.6",font='Helvetica 9 bold')                                                             #CREATING A LABEL THAT SHOWS WHAT VERSION THE USER IS ON  
-    l10.place(x=1600, y=655)                                                                                                           #DISPLAYING THE LABEL AT THE BOTTOM OF THE WINDOW
-    
-    
-    LONDONTAB = ttk.Frame()                                                                          #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
-
-    s1 = Label(LONDONTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                        #DISPLAYING THE SPCAE LABEL                                                                                                
-    l1 = Label(LONDONTAB, text="COVID-19 & Air Pollution Levels - London", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                        #DISPLAYING THE LABEL
-    s2 = Label(LONDONTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s2.pack()                                                                                        #DISPLAYING THE SPCAE LABEL
+    "Nathan Jones, Ben Moss, Samual Bailey, Ryan Musiwa, Sam Davey & Ela Salah", font='Helvetica 10 ', bg="white")                                 #CREATING A LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
+    l7.pack()                                                                                                                                      #DISPLAYING THE LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
+    s4 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s4.pack()                                                                                                                                      #DISPLAYING THE SPCAE LABEL
+    l8 = Label(HOMEPAGETAB, text="Contact Information",font='Helvetica 10 bold', bg="white")                                                       #CREATING A SUB HEADING FOR THE CONTACT INFORMATION  
+    l8.pack()                                                                                                                                      #DISPLAYING THE LABEL
+    l9 = Label(HOMEPAGETAB, text="Website: https://github.com/NathanDan/Data-Analysis-Team-Software-Engineering",font='Helvetica 10', bg="white")  #CREATING A LABEL FOR THE DESCRIPTION OF THE CONTACT INFORMATION 
+    l9.pack()                                                                                                                                      #DISPLAYING THE LABEL
+    l10 = Label(HOMEPAGETAB, text="Version 1.1.7",font='Helvetica 9 bold', bg="white")                                                             #CREATING A LABEL THAT SHOWS WHAT VERSION THE USER IS ON  
+    l10.place(x=1600, y=655)                                                                                                                       #DISPLAYING THE LABEL AT THE BOTTOM OF THE WINDOW
     
 
+    
+    LONDONTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
+
+    s1 = Label(LONDONTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                                
+    l1 = Label(LONDONTAB, text="COVID-19 & Air Pollution Levels - London", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                   #DISPLAYING THE LABEL
+    s2 = Label(LONDONTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s2.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL
+    
+    
     def LONLINEGRAPHS():
         
         figure2019 = plt.Figure(figsize=(6,5), dpi=90)                                                  #CREATING THE FRAME FOR THE 2019 GRAPH TO BE DISPLAYED IN
@@ -144,30 +148,37 @@ def MenuMain():
         ax.set_ylabel("NO2 Level")                                                                      #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - London',ax=ax)                      #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                           #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
+
+    def LONSTATS():
+        df19 = pd.read_csv('London\\London 2019.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        df20 = pd.read_csv('London\\London 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
         
-    
+        
+    LONLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
     b1 = Button(LONDONTAB, text="Line Graphs", command=LONLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(LONDONTAB, text="Area Graphs", command=LONAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                     #DISPLAYING THE BAR GRAPH BUTTON
+    b2 = Button(LONDONTAB, text="Area Graphs", command=LONAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(LONDONTAB, text="Yearly Statistics", command=LONSTATS)        #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(LONDONTAB, text="Monthly Statistics", command=LONSTATS)       #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                     #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
     
     
 
+    MADRIDTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
 
-
-    MADRIDTAB = ttk.Frame()                                                                          #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
-
-    s1 = Label(MADRIDTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                        #DISPLAYING THE SPCAE LABEL                                                                                              
-    l1 = Label(MADRIDTAB, text="COVID-19 & Air Pollution Levels - Madrid", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                        #DISPLAYING THE LABEL
-    s3 = Label(MADRIDTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                        #DISPLAYING THE SPCAE LABEL
+    s1 = Label(MADRIDTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                              
+    l1 = Label(MADRIDTAB, text="COVID-19 & Air Pollution Levels - Madrid", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                   #DISPLAYING THE LABEL
+    s3 = Label(MADRIDTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL
 
     def MADLINEGRAPHS():
         
         figure2019 = plt.Figure(figsize=(6,5), dpi=90)                                                  #CREATING THE FRAME FOR THE 2019 GRAPH TO BE DISPLAYED IN
-        df19 = pd.read_csv('London\\London 2019.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
+        df19 = pd.read_csv('Madrid\\Madrid 2019.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
         ax = figure2019.add_subplot(111)                                                                #ADDING THE GRAPH TO THE FRAME 
         Chart2019 = FigureCanvasTkAgg(figure2019, MADRIDTAB)                                            #DISPLAYING THE GRAPH IN THE TKINTER TAB FOR THE CITY
         Chart2019.get_tk_widget().place(x=20, y=100)                                                    #POSITIONING THE GRAPH SO THAT THEY WILL ALL SIT ALONGSIDE EACH OTHER ON ONE ROW
@@ -229,22 +240,30 @@ def MenuMain():
         ax.set_ylabel("NO2 Level")                                                                      #SETTING THE Y LABEL ON THE GRAPH TO BE "NO2 Level"
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - Madrid',ax=ax)                      #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                           #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
+
+    def MADSTATS():
+        print("Hello")
         
-    
+    MADLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
     b1 = Button(MADRIDTAB, text="Line Graphs", command=MADLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(MADRIDTAB, text="Area Graphs", command=MADAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                     #DISPLAYING THE BAR GRAPH BUTTON
+    b2 = Button(MADRIDTAB, text="Area Graphs", command=MADAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(MADRIDTAB, text="Yearly Statistics", command=MADSTATS)        #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(MADRIDTAB, text="Monthly Statistics", command=MADSTATS)       #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                     #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
     
+
     
-    MILANTAB = ttk.Frame()
+    MILANTAB = ttk.Frame(style="W.TFrame")
     
-    s1 = Label(MILANTAB, text=" ")                                                                 #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                      #DISPLAYING THE SPCAE LABEL                                                                                             
-    l1 = Label(MILANTAB, text="COVID-19 & Air Pollution Levels - Milan", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                      #DISPLAYING THE LABEL
-    s3 = Label(MILANTAB, text=" ")                                                                 #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                      #DISPLAYING THE SPCAE LABEL
+    s1 = Label(MILANTAB, text=" ",bg="white")                                                                 #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                 #DISPLAYING THE SPCAE LABEL                                                                                             
+    l1 = Label(MILANTAB, text="COVID-19 & Air Pollution Levels - Milan", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                 #DISPLAYING THE LABEL
+    s3 = Label(MILANTAB, text=" ",bg="white")                                                                 #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                 #DISPLAYING THE SPCAE LABEL
 
     def MILLINEGRAPHS():
         
@@ -312,22 +331,29 @@ def MenuMain():
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - Milan',ax=ax)                     #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                         #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
-    
+    def MILSTATS():
+        print("Hello")
+        
+    MILLINEGRAPHS()                                                          #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
     b1 = Button(MILANTAB, text="Line Graphs", command=MILLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(MILANTAB, text="Area Graphs", command=MILAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                    #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                    #DISPLAYING THE BAR GRAPH BUTTON
-
+    b2 = Button(MILANTAB, text="Area Graphs", command=MILAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(MILANTAB, text="Yearly Statistics", command=MILSTATS)        #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(MILANTAB, text="Monthly Statistics", command=MILSTATS)       #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                    #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                    #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                    #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                    #DISPLAYING THE MONTHLY STATISTICS BUTTON
     
 
-    BERLINTAB = ttk.Frame()                                                                          #CLOSING THE MENU AFTER THE TAB HAS BEEN LAUNCHED
-                                                                                                     #CREATING THE WINDOW THAT WILL HOUSE THE CITY'S DATA
-    s1 = Label(BERLINTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                        #DISPLAYING THE SPCAE LABEL                                                                                                 
-    l1 = Label(BERLINTAB, text="COVID-19 & Air Pollution Levels - Berlin", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                        #DISPLAYING THE LABEL
-    s3 = Label(BERLINTAB, text=" ")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                        #DISPLAYING THE SPCAE LABEL
+
+    BERLINTAB = ttk.Frame(style="W.TFrame")                                                                      #CLOSING THE MENU AFTER THE TAB HAS BEEN LAUNCHED
+                                                                                                                 #CREATING THE WINDOW THAT WILL HOUSE THE CITY'S DATA
+    s1 = Label(BERLINTAB, text=" ", bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                    #DISPLAYING THE SPCAE LABEL                                                                                                 
+    l1 = Label(BERLINTAB, text="COVID-19 & Air Pollution Levels - Berlin", font='Helvetica 12 bold', bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                    #DISPLAYING THE LABEL
+    s3 = Label(BERLINTAB, text=" ", bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                    #DISPLAYING THE SPCAE LABEL
 
     def BERLINEGRAPHS():
          
@@ -395,23 +421,29 @@ def MenuMain():
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - Berlin',ax=ax)                     #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                          #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
-    
+    def BERSTATS():
+        print("Hello")
+        
+    BERLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
     b1 = Button(BERLINTAB, text="Line Graphs", command=BERLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(BERLINTAB, text="Area Graphs", command=BERAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                     #DISPLAYING THE BAR GRAPH BUTTON
+    b2 = Button(BERLINTAB, text="Area Graphs", command=BERAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(BERLINTAB, text="Yearly Statistics", command=BERSTATS)        #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(BERLINTAB, text="Monthly Statistics", command=BERSTATS)       #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                     #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
 
 
 
+    BARCELONATAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
 
-    BARCELONATAB = ttk.Frame()                                                                             #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
-
-    s1 = Label(BARCELONATAB, text=" ")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                              #DISPLAYING THE SPCAE LABEL                                                                                                   
-    l1 = Label(BARCELONATAB, text="COVID-19 & Air Pollution Levels - Barcelona", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                              #DISPLAYING THE LABEL
-    s3 = Label(BARCELONATAB, text=" ")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                              #DISPLAYING THE SPCAE LABEL
+    s1 = Label(BARCELONATAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL                                                                                                   
+    l1 = Label(BARCELONATAB, text="COVID-19 & Air Pollution Levels - Barcelona", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                         #DISPLAYING THE LABEL
+    s3 = Label(BARCELONATAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL
 
     def BARLINEGRAPHS():
         
@@ -479,23 +511,29 @@ def MenuMain():
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - Barcelona',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                                 #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
-    
-    b1 = Button(BARCELONATAB, text="Line Graphs", command=BARLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(BARCELONATAB, text="Area Graphs", command=BARAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                        #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                        #DISPLAYING THE BAR GRAPH BUTTON
+    def BARSTATS():
+        print("Hello")
+        
+    BARLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
+    b1 = Button(BARCELONATAB, text="Line Graphs", command=BARLINEGRAPHS)      #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
+    b2 = Button(BARCELONATAB, text="Area Graphs", command=BARAREAGRAPHS)      #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(BARCELONATAB, text="Yearly Statistics", command=BARSTATS)     #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(BARCELONATAB, text="Monthly Statistics", command=BARSTATS)    #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                     #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
 
 
 
+    AMSTERDAMTAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
 
-    AMSTERDAMTAB = ttk.Frame()                                                                             #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
-
-    s1 = Label(AMSTERDAMTAB, text=" ")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
-    s1.pack()                                                                                              #DISPLAYING THE SPCAE LABEL                                                                                                    
-    l1 = Label(AMSTERDAMTAB, text="COVID-19 & Air Pollution Levels - Amsterdam", font='Helvetica 12 bold') #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
-    l1.pack()                                                                                              #DISPLAYING THE LABEL
-    s3 = Label(AMSTERDAMTAB, text=" ")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s3.pack()                                                                                              #DISPLAYING THE SPCAE LABEL
+    s1 = Label(AMSTERDAMTAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL                                                                                                    
+    l1 = Label(AMSTERDAMTAB, text="COVID-19 & Air Pollution Levels - Amsterdam", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                         #DISPLAYING THE LABEL
+    s3 = Label(AMSTERDAMTAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s3.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL
 
     def AMSLINEGRAPHS():
         
@@ -563,20 +601,28 @@ def MenuMain():
         df20.plot.area(color='#3498db', title='NO2 Levels In 2020 - Amsterdam',ax=ax)                         #PLOTTING THE DATA FROM THE CSV FILE AND ADDING A TITLE TO THE WHOLE GRAPH
         LD.plot.area(color='#FF000025',ax=ax)                                                                 #PLOTTING THE LOCKDOWN DATES ONTO THE 2020 GRAPH TO SEE IF THERE IS A SPIKE IN THE DATA
         
-    
-    b1 = Button(AMSTERDAMTAB, text="Line Graphs", command=AMSLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
-    b2 = Button(AMSTERDAMTAB, text="Area Graphs", command=AMSAREAGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE BAR GRAPHS FOR THE CITY
-    b1.place(x=770, y=50)                                                        #DISPLAYING THE LINE GRAPH BUTTON
-    b2.place(x=850, y=50)                                                        #DISPLAYING THE BAR GRAPH BUTTON
+    def AMSSTATS():
+        print("Hello")
+        
+    AMSLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
+    b1 = Button(AMSTERDAMTAB, text="Line Graphs", command=AMSLINEGRAPHS)      #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
+    b2 = Button(AMSTERDAMTAB, text="Area Graphs", command=AMSAREAGRAPHS)      #CREATING THE BUTTON THAT DISPLAYS THE AREA GRAPHS FOR THE CITY
+    b3 = Button(AMSTERDAMTAB, text="Yearly Statistics", command=AMSSTATS)     #CREATING THE BUTTON THAT DISPLAYS THE YEARLY STATISTICS FOR THE CITY
+    b4 = Button(AMSTERDAMTAB, text="Monthly Statistics", command=AMSSTATS)    #CREATING THE BUTTON THAT DISPLAYS THE MONTHLY STATISTICS FOR THE CITY
+    b1.place(x=665, y=50)                                                     #DISPLAYING THE LINE GRAPH BUTTON
+    b2.place(x=740, y=50)                                                     #DISPLAYING THE AREA GRAPH BUTTON
+    b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
+    b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
+
     
 
-    tabControl.add(HOMEPAGETAB, text ='Homepage')                        #GIVING THE TAB ITS SPECIFIC NAME AS A HOMEPAGE 
-    tabControl.add(LONDONTAB, text ='London - Air Pollution Data')       #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY     
-    tabControl.add(MADRIDTAB, text ='Madrid - Air Pollution Data')       #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
-    tabControl.add(MILANTAB, text ='Milan - Air Pollution Data')         #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
-    tabControl.add(BERLINTAB, text ='Berlin - Air Pollution Data')       #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
-    tabControl.add(BARCELONATAB, text ='Barcelona - Air Pollution Data') #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
-    tabControl.add(AMSTERDAMTAB, text ='Amsterdam - Air Pollution Data') #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
-    tabControl.pack(expand = 1, fill ="both")                            #ACTUALLY DISPLAYING THE DIFFERNT TABS
+    tabControl.add(HOMEPAGETAB, text ='Homepage')                            #GIVING THE TAB ITS SPECIFIC NAME AS A HOMEPAGE 
+    tabControl.add(LONDONTAB, text ='London - Air Pollution Data')           #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY     
+    tabControl.add(MADRIDTAB, text ='Madrid - Air Pollution Data')           #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
+    tabControl.add(MILANTAB, text ='Milan - Air Pollution Data')             #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
+    tabControl.add(BERLINTAB, text ='Berlin - Air Pollution Data')           #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
+    tabControl.add(BARCELONATAB, text ='Barcelona - Air Pollution Data')     #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
+    tabControl.add(AMSTERDAMTAB, text ='Amsterdam - Air Pollution Data')     #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
+    tabControl.pack(expand = 1, fill ="both")                                #ACTUALLY DISPLAYING THE DIFFERNT TABS
     
 MenuMain()
