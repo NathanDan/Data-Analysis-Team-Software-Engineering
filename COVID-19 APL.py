@@ -4,7 +4,7 @@
 #FEB/MAR/APR/MAY 2021
 
 #COVID-19 AND POLUTION LEVELS TRACKER
-#VERSION 1.1.7
+#VERSION 1.1.8
 
 import tkinter as tk                                             #IMPORTING THE TKINTER MODULE TO BE USED IN THE PROGRAM
 import sys                                                       #ALLOWS ACCESS TO THE SYSTEM FROM WITHIN PYTHON
@@ -16,6 +16,7 @@ import pandas as pd                                              #ALLOWS FOR CER
 from tkinter import ttk                                          #IMPORTING THE TKK MODULE THAT ALLOWS FOR TABBED WIDGETS
 from tkinter import messagebox, Label, Button, FALSE, Tk, Entry  #ALLOWING FOR TKINTER TO BE ACCESSED/UTILISED FOR THE PROGRAM TO USE ALL OF ITS FUNCTIONS AND GIVING THE PROGRAM A GUI
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg  #ALLOWING FOR THE MATPLOTLIB GRAPHS TO BE INSERTED INTO THE TKINTER GUI'S
+from PIL import Image, ImageTk                                   #ALLOWS FOR THE IMPORTS OF IMAGES INTO THE PROGGRAM TO MAKE IT VISUALLY LOOK MORE PROFESSIONAL
 
 def MenuMain():
     MENU = Tk()                                                  #CREATING THE WINDOW THAT WILL BE DISPLAYED TO THE USER AND HOUSES ALL OF THE DIFFERENT TABS
@@ -24,10 +25,10 @@ def MenuMain():
     MENU.geometry("1690x700")                                    #CONFIGURING THE FIXED SIZE OF THE WINDOW WHICH WILL ALWAYS BE THIS SIZE
     tabControl = ttk.Notebook(MENU)                              #TELLING THE PROGRAM THAT WILL WILL BE A TABBED WIDGET
 
-    style = ttk.Style()
-    style.configure("W.TFrame", foreground="white", background="white")
+    style = ttk.Style()                                                  #CREATING A TTK STYLE THAT WILL CHANGE THE COLOUR OF THE WIDGET
+    style.configure("W.TFrame", foreground="white", background="white")  #SETTING THE BACKGROUND COLOUR TO BE WHITE, SO THAT THE WIDGET LOOKS SMARTER AND MORE PRESENTABLE
     
-    HOMEPAGETAB = ttk.Frame(style="W.TFrame")
+    HOMEPAGETAB = ttk.Frame(style="W.TFrame")                            #CREATING THE HOME TAB ALONG WITH ITS BACKGROUND COLOUR
 
     s1 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                           #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                                               #DISPLAYING THE SPCAE LABEL                                                                                                
@@ -61,19 +62,59 @@ def MenuMain():
     l6.pack()                                                                                                                                                      #DISPLAYING THE LABEL
     l7 = Label(HOMEPAGETAB, text=
     "Nathan Jones, Ben Moss, Samual Bailey, Ryan Musiwa, Sam Davey & Ela Salah", font='Helvetica 10 ', bg="white")                                 #CREATING A LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
-    l7.pack()                                                                                                                                      #DISPLAYING THE LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
-    s4 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
-    s4.pack()                                                                                                                                      #DISPLAYING THE SPCAE LABEL
-    l8 = Label(HOMEPAGETAB, text="Contact Information",font='Helvetica 10 bold', bg="white")                                                       #CREATING A SUB HEADING FOR THE CONTACT INFORMATION  
+    l7.pack()                                                                                                                                      #DISPLAYING THE LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM
+    s5 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s5.pack()                                                                                                                                      #DISPLAYING THE SPCAE LABEL
+    l8 = Label(HOMEPAGETAB, text="The Coding Team",font='Helvetica 10 bold',bg="white")                                                            #CREATING A SUB HEADING FOR THE DESCRIPTION  
     l8.pack()                                                                                                                                      #DISPLAYING THE LABEL
-    l9 = Label(HOMEPAGETAB, text="Website: https://github.com/NathanDan/Data-Analysis-Team-Software-Engineering",font='Helvetica 10', bg="white")  #CREATING A LABEL FOR THE DESCRIPTION OF THE CONTACT INFORMATION 
-    l9.pack()                                                                                                                                      #DISPLAYING THE LABEL
-    l10 = Label(HOMEPAGETAB, text="Version 1.1.7",font='Helvetica 9 bold', bg="white")                                                             #CREATING A LABEL THAT SHOWS WHAT VERSION THE USER IS ON  
-    l10.place(x=1600, y=655)                                                                                                                       #DISPLAYING THE LABEL AT THE BOTTOM OF THE WINDOW
+    l9 = Label(HOMEPAGETAB, text=
+    "Nathan Jones, Ben Moss & Sam Davey", font='Helvetica 10 ', bg="white")                                                                        #CREATING A LABEL THAT LISTS EVERY ONE WHO CODED WITH THE PROGRAM 
+    l9.pack()                                                                                                                                      #DISPLAYING THE LABEL THAT LISTS EVERY ONE WHO IS INVOLVED WITH THE PROGRAM 
+    s6 = Label(HOMEPAGETAB, text=" ", bg="white")                                                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s6.pack()                                                                                                                                      #DISPLAYING THE SPCAE LABEL
+    l10 = Label(HOMEPAGETAB, text="Contact Information",font='Helvetica 10 bold', bg="white")                                                      #CREATING A SUB HEADING FOR THE CONTACT INFORMATION  
+    l10.pack()                                                                                                                                     #DISPLAYING THE LABEL
+    l11 = Label(HOMEPAGETAB, text="Website: https://github.com/NathanDan/Data-Analysis-Team-Software-Engineering",font='Helvetica 10', bg="white") #CREATING A LABEL FOR THE DESCRIPTION OF THE CONTACT INFORMATION 
+    l11.pack()                                                                                                                                     #DISPLAYING THE LABEL
+    l12 = Label(HOMEPAGETAB, text="Version 1.1.8",font='Helvetica 9 bold', bg="white")                                                             #CREATING A LABEL THAT SHOWS WHAT VERSION THE USER IS ON  
+    l12.place(x=1600, y=655)                                                                                                                       #DISPLAYING THE LABEL AT THE BOTTOM OF THE WINDOW
     
 
+    MAPTAB = ttk.Frame(style="W.TFrame")                                                                           #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
+
+    s1 = Label(MAPTAB, text=" ",bg="white")                                                                        #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                      #DISPLAYING THE SPCAE LABEL                                                                                                
+    l1 = Label(MAPTAB, text="COVID-19 & Air Pollution Levels - European Map", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                      #DISPLAYING THE LABEL
+    s2 = Label(MAPTAB, text=" ",bg="white")                                                                        #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s2.pack()                                                                                                      #DISPLAYING THE SPCAE LABEL
+
+    Map = ImageTk.PhotoImage(Image.open('Map\\EU.png'))
+    MAP = ttk.Label(MAPTAB, image=Map)
+    MAP.pack()
     
-    LONDONTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
+    def MAPVIEW():
+       
+        button1 = tk.Button(MAPTAB, text = "Berlin", command = MAPVIEW, width = 6, activebackground = "#33B5E5")
+        button2 = tk.Button(MAPTAB, text = "Amsterdam", command = MAPVIEW,width = 10, activebackground = "#33B5E5")
+        button3 = tk.Button(MAPTAB, text = "Paris", command = MAPVIEW, width = 5, activebackground = "#33B5E5")
+        button4 = tk.Button(MAPTAB, text = "London", command = MAPVIEW, width = 6, activebackground = "#33B5E5")
+        button5 = tk.Button(MAPTAB, text = "Madrid", command = MAPVIEW, width = 6, activebackground = "#33B5E5")
+        button6 = tk.Button(MAPTAB, text = "Barcelona", command = MAPVIEW, width = 8, activebackground = "#33B5E5")
+        button7 = tk.Button(MAPTAB, text = "Milan", command = MAPVIEW, width = 6, activebackground = "#33B5E5")
+        
+        button1.place(x=800, y=1000)
+        button2.place(x=600, y=900)
+        button3.place(x=540, y=1100)
+        button4.place(x=460, y=900)
+        button5.place(x=400, y=1300)
+        button6.place(x=540, y=1300)
+        button7.place(x=800, y=1200)
+    MAPVIEW()
+
+
+
+    LONDONTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
 
     s1 = Label(LONDONTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                                
@@ -151,8 +192,8 @@ def MenuMain():
 
     def LONSTATS():
         df19 = pd.read_csv('London\\London 2019.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        df20 = pd.read_csv('London\\London 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH
-        
+        df20 = pd.read_csv('London\\London 2020.csv', parse_dates=['Month'], index_col="Month")         #READING THE CSV FILE WITH ALL OF THE DATA INSIDE TO POPULATE THE GRAPH                                                                                                #DISPLAYING THE SPCAE LABEL
+ 
         
     LONLINEGRAPHS()                                                           #DISPLAYING THE LINE GRAPH AS THE FIRST GRAPH TO BEEN SEEN IN THE PROGRAM SO IT ISNT AN EMPTY SCREEN
     b1 = Button(LONDONTAB, text="Line Graphs", command=LONLINEGRAPHS)         #CREATING THE BUTTON THAT DISPLAYS THE LINE GRAPHS FOR THE CITY
@@ -166,7 +207,7 @@ def MenuMain():
     
     
 
-    MADRIDTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
+    MADRIDTAB = ttk.Frame(style="W.TFrame")                                                                     #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
 
     s1 = Label(MADRIDTAB, text=" ",bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                   #DISPLAYING THE SPCAE LABEL                                                                                              
@@ -256,7 +297,7 @@ def MenuMain():
     
 
     
-    MILANTAB = ttk.Frame(style="W.TFrame")
+    MILANTAB = ttk.Frame(style="W.TFrame")                                                                    #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
     
     s1 = Label(MILANTAB, text=" ",bg="white")                                                                 #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                 #DISPLAYING THE SPCAE LABEL                                                                                             
@@ -346,8 +387,8 @@ def MenuMain():
     
 
 
-    BERLINTAB = ttk.Frame(style="W.TFrame")                                                                      #CLOSING THE MENU AFTER THE TAB HAS BEEN LAUNCHED
-                                                                                                                 #CREATING THE WINDOW THAT WILL HOUSE THE CITY'S DATA
+    BERLINTAB = ttk.Frame(style="W.TFrame")                                                                      #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
+                                                                                                                 
     s1 = Label(BERLINTAB, text=" ", bg="white")                                                                  #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                    #DISPLAYING THE SPCAE LABEL                                                                                                 
     l1 = Label(BERLINTAB, text="COVID-19 & Air Pollution Levels - Berlin", font='Helvetica 12 bold', bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
@@ -436,7 +477,7 @@ def MenuMain():
 
 
 
-    BARCELONATAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
+    BARCELONATAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
 
     s1 = Label(BARCELONATAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL                                                                                                   
@@ -526,7 +567,7 @@ def MenuMain():
 
 
 
-    AMSTERDAMTAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA
+    AMSTERDAMTAB = ttk.Frame(style="W.TFrame")                                                                        #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
 
     s1 = Label(AMSTERDAMTAB, text=" ",bg="white")                                                                     #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
     s1.pack()                                                                                                         #DISPLAYING THE SPCAE LABEL                                                                                                    
@@ -614,9 +655,48 @@ def MenuMain():
     b3.place(x=818, y=50)                                                     #DISPLAYING THE YEARLY STATISTICS BUTTON
     b4.place(x=914, y=50)                                                     #DISPLAYING THE MONTHLY STATISTICS BUTTON
 
-    
 
-    tabControl.add(HOMEPAGETAB, text ='Homepage')                            #GIVING THE TAB ITS SPECIFIC NAME AS A HOMEPAGE 
+    MAPTAB = ttk.Frame(style="W.TFrame")                                                                           #CREATING THE TAB THAT WILL HOUSE THE CITY'S DATA ALONG WITH ITS BACKGROUND COLOUR
+
+    s1 = Label(MAPTAB, text=" ",bg="white")                                                                        #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE
+    s1.pack()                                                                                                      #DISPLAYING THE SPCAE LABEL                                                                                                
+    l1 = Label(MAPTAB, text="COVID-19 & Air Pollution Levels - European Map", font='Helvetica 12 bold',bg="white") #CREATING A MAIN HEADING FOR THE TAB THAT WILL BE AT THE TOP
+    l1.pack()                                                                                                      #DISPLAYING THE LABEL
+    s2 = Label(MAPTAB, text=" ",bg="white")                                                                        #CREATING AN EMPTY LABEL THAT WILL ACT AS A ONE LINE SPACE 
+    s2.pack()                                                                                                      #DISPLAYING THE SPCAE LABEL
+    
+    def MAPVIEW():
+        FILENAME = 'Map\\EU.png'
+        canvas = tk.Canvas(MAPTAB, width=1000, height=950)
+        canvas.pack()
+        MAPIMG = ImageTk.PhotoImage(file = FILENAME)
+        canvas.create_image(500, 500, image=MAPIMG)
+       
+        button1 = tk.Button(MAPTAB, text = "Berlin", command = MAPVIEW, anchor = 'w',
+                    width = 6, activebackground = "#33B5E5")
+        button2 = tk.Button(MAPTAB, text = "Amsterdam", command = MAPVIEW, anchor = 'w',
+                            width = 10, activebackground = "#33B5E5")
+        button3 = tk.Button(MAPTAB, text = "Paris", command = MAPVIEW, anchor = 'w',
+                            width = 5, activebackground = "#33B5E5")
+        button4 = tk.Button(MAPTAB, text = "London", command = MAPVIEW, anchor = 'w',
+                            width = 6, activebackground = "#33B5E5")
+        button5 = tk.Button(MAPTAB, text = "Madrid", command = MAPVIEW, anchor = 'w',
+                            width = 6, activebackground = "#33B5E5")
+        button6 = tk.Button(MAPTAB, text = "Barcelona", command = MAPVIEW, anchor = 'w',
+                            width = 8, activebackground = "#33B5E5")
+        button7 = tk.Button(MAPTAB, text = "Milan", command = MAPVIEW, anchor = 'w',
+                            width = 6, activebackground = "#33B5E5")
+        button1.place(x=400, y=500)
+        button2.place(x=300, y=450)
+        button3.place(x=270, y=550)
+        button4.place(x=230, y=450)
+        button5.place(x=200, y=650)
+        button6.place(x=270, y=650)
+        button7.place(x=400, y=600)
+    MAPVIEW()
+
+    tabControl.add(HOMEPAGETAB, text ='Homepage')                            #GIVING THE TAB ITS SPECIFIC NAME AS A HOMEPAGE
+    tabControl.add(MAPTAB, text ='European Map')                             #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE MAP
     tabControl.add(LONDONTAB, text ='London - Air Pollution Data')           #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY     
     tabControl.add(MADRIDTAB, text ='Madrid - Air Pollution Data')           #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
     tabControl.add(MILANTAB, text ='Milan - Air Pollution Data')             #GIVING THE TAB ITS SPECIFIC NAME REGARDING THE CITY
