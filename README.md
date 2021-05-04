@@ -16,6 +16,12 @@ The data that is being used in these program has been sourced from the World Air
 a databse that consits of AQD from all over the World. As this program is free and for educational purposes we are allowed to use the data-sets from the WAQIP
 as we are not making a profit and are solely using the data to educate and show a trend in the data.
 
+---- FEEDBACK ----
+
+Please feel free to fill in this short Microsoft Forms Questionaire to give feedback and what you would like to see next!\
+
+https://forms.office.com/r/TD8bU1WWdT
+
 ---- DATA SOURCES ----
 
 Amsterdam - http://www.luchtmeetnet.nl/
