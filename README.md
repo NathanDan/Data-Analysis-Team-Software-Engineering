@@ -18,7 +18,7 @@ as we are not making a profit and are solely using the data to educate and show 
 
 ---- FEEDBACK ----
 
-Please feel free to fill in this short Microsoft Forms Questionaire to give feedback and what you would like to see next!\
+Please feel free to fill in this short Microsoft Forms Questionaire to give feedback and what you would like to see next!
 
 https://forms.office.com/r/TD8bU1WWdT
 
