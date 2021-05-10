@@ -4,6 +4,8 @@ Nathan Jones, Ela Salah, Ryan Musiwa, Samual Bailey, Sam Davey & Ben Moss
 
 Q1 2021
 
+CURRENT VERSION 1.1.9
+
 ---- DESCRIPTION ----
 
 This is a COVID-19 Air Pollution tracking program that looks at the correlation between COVID-19 Lockdowns and the overall pollution impact in certain European cities. The program utilses graphs and other visual stats to allow for a visual representation of a significant or minimal difference in pollution levels as a 
